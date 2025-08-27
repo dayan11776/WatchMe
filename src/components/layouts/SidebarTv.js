@@ -1,7 +1,4 @@
-import { UseContextFilter } from "../../usecontext/ContextFilter"
-
 export const SidebarTv = ({setTvType}) => {
-    const {dispatch} = UseContextFilter()
 
   return (
     <aside className='h-full absolute w-72 top-0 border shadow-sm'  style={{"backgroundColor":"rgba(0,0,0,0.8)"}}>
