@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import { UseContextFilter } from "../../../usecontext/ContextFilter"
 
 export const Moviefetch = (title) => {
@@ -10,14 +10,16 @@ export const Moviefetch = (title) => {
         if(title){
              url = `https://api.themoviedb.org/3/movie/${title}?api_key=${process.env.REACT_APP_API_KEY}`
         }
-    
-        useEffect(() => {
-            const getData = async () => { 
+
+        const getData = useCallback( async () => { 
                 const response = await fetch(url)
                 const data = await response.json()
                 dataMovie(data.results)
-            }
-            getData()
-        },[url])
+            },[url,dataMovie] )
+    
+        useEffect(() => {
+           getData()
+        },[getData])
+        
   return {movie}
 }
