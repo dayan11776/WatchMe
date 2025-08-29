@@ -12,15 +12,24 @@ export const TvSeriesFetch = (title) => {
              url = `https://api.themoviedb.org/3/tv/${title}?api_key=${process.env.REACT_APP_API_KEY}`
         }
     
-        const getData = useCallback( async () => { 
-            const response = await fetch(url)
-            const data = await response.json()
-            dataMovie(data.results)
-        },[url,dataMovie] )
+        // const getData = useCallback( async () => { 
+        //     const response = await fetch(url)
+        //     const data = await response.json()
+        //     dataMovie(data.results)
+        // },[url,dataMovie] )
 
         useEffect(() => {
+           const getData =  async () => { 
+              try{
+                  const response = await fetch(url)
+                    const data = await response.json()
+                    dataMovie(data.results)
+              }catch(e){
+                console.log(e.message)
+              }
+            }
             getData()
-        },[getData])
+        },[url])
         
   return {movie}
 }
