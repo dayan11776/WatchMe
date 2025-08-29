@@ -33,7 +33,7 @@ export const Moviefetch = (title) => {
               }
             }
             getData()
-        },[url])
+        },[url]) //eslint-disable-line
         
   return {movie}
 }

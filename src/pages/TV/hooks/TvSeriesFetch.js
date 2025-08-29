@@ -29,7 +29,7 @@ export const TvSeriesFetch = (title) => {
               }
             }
             getData()
-        },[url])
+        },[url]) //eslint-disable-line
         
   return {movie}
 }
